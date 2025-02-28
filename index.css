@@ -15,20 +15,72 @@ body {
     align-items: center;
 }
 
-.nomeTitulo {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 7vw;
-    font-weight: 800;
-    color: black;
-    z-index: 2;
-    margin-block: 3vw;
-    position: relative;
-    overflow: hidden;
+@keyframes nomeTituloAnimation {
+    from {
+        color: rgb(66, 90, 75);
+        text-shadow: none;
+    }
+
+    to {
+        color: rgb(93, 127, 106);
+        text-shadow: white 0 0 20px;
+    }
 }
+
+@keyframes nomeTituloAnimationOut {
+    from {
+        color: rgb(93, 127, 106);
+        text-shadow: white 0 0 20px;
+    }
+
+    to {
+        color: rgb(66, 90, 75);
+        text-shadow: none;
+    }
+}
+
+@keyframes scrollWatcherAnimation {
+    to {
+        scale: 1 1;
+    }
+}
+
+.scrollWatcher {
+    height: 5px;
+    background-color: lime;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    scale: 0 1;
+    animation: scrollWatcherAnimation linear;
+    animation-timing-function: scroll();
+}
+
+.nomeTitulo {
+    animation-name: nomeTituloAnimationOut;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 6em;
+    font-weight: 800;
+    color: rgb(66, 90, 75);
+    z-index: 3;
+    margin-block: .5em;
+    position: relative;
+    mix-blend-mode: color-burn;
+}
+
+.nomeTitulo:hover {
+    animation-name: nomeTituloAnimation;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+}
+
 
 .imgTitulo {
     position: relative;
-    top: -34vh;
+    top: -200px;
     z-index: 1;
     display: flex;
     justify-content: center;
